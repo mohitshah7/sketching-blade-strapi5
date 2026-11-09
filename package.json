@@ -1,0 +1,37 @@
+{
+  "name": "sketching-blade-cms",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A Strapi application",
+  "scripts": {
+    "build": "strapi build",
+    "console": "strapi console",
+    "deploy": "strapi deploy",
+    "dev": "strapi develop",
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "strapi": "strapi",
+    "upgrade": "npx @strapi/upgrade latest",
+    "upgrade:dry": "npx @strapi/upgrade latest --dry"
+  },
+  "dependencies": {
+    "@strapi/database": "5.61.0",
+    "@strapi/plugin-cloud": "5.61.0",
+    "@strapi/plugin-users-permissions": "5.61.0",
+    "@strapi/strapi": "5.61.0",
+    "better-sqlite3": "12.11.1",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-router-dom": "^6.30.3",
+    "styled-components": "^6.0.0"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=22.0.0 <=26.x.x",
+    "npm": ">=6.0.0"
+  },
+  "strapi": {
+    "uuid": "fbac6cbd-d6ef-44ef-b49f-7152c7b19ee6",
+    "installId": "8f740da87ac89112da0e7c9c49b65602efc5c3042e7872a1fd37d8608813e214"
+  }
+}
