@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "comic_pages",
+  "info": {
+    "singularName": "comic-page",
+    "pluralName": "comic-pages",
+    "displayName": "ComicPage"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "SerialNumber": {
+      "type": "integer"
+    },
+    "Image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "comic": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::comic.comic",
+      "inversedBy": "comic_pages"
+    }
+  }
+}
