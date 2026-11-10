@@ -610,6 +610,39 @@ export interface ApiGenreGenre extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
+  collectionName: 'home_pages';
+  info: {
+    displayName: 'HomePage';
+    pluralName: 'home-pages';
+    singularName: 'home-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    BackgroundImage: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    BannerImage: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::home-page.home-page'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiMediumMedium extends Struct.CollectionTypeSchema {
   collectionName: 'mediums';
   info: {
@@ -1217,6 +1250,7 @@ declare module '@strapi/strapi' {
       'api::comic-page.comic-page': ApiComicPageComicPage;
       'api::comic.comic': ApiComicComic;
       'api::genre.genre': ApiGenreGenre;
+      'api::home-page.home-page': ApiHomePageHomePage;
       'api::medium.medium': ApiMediumMedium;
       'api::poem.poem': ApiPoemPoem;
       'api::story.story': ApiStoryStory;
