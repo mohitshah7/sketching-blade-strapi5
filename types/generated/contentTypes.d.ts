@@ -468,10 +468,7 @@ export interface ApiArtworkArtwork extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Description: Schema.Attribute.Text &
-      Schema.Attribute.SetMinMaxLength<{
-        maxLength: 100;
-      }>;
+    Description: Schema.Attribute.Text;
     Image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -610,6 +607,36 @@ export interface ApiGenreGenre extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiGodArtGodArt extends Struct.CollectionTypeSchema {
+  collectionName: 'god_arts';
+  info: {
+    displayName: 'GodArt';
+    pluralName: 'god-arts';
+    singularName: 'god-art';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Description: Schema.Attribute.Text;
+    Image: Schema.Attribute.Media<'images' | 'files'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::god-art.god-art'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    Title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
   collectionName: 'home_pages';
   info: {
@@ -728,6 +755,36 @@ export interface ApiStoryStory extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     Title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiWallpaperWallpaper extends Struct.CollectionTypeSchema {
+  collectionName: 'wallpapers';
+  info: {
+    displayName: 'Wallpaper';
+    pluralName: 'wallpapers';
+    singularName: 'wallpaper';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Image: Schema.Attribute.Media<'images' | 'files'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::wallpaper.wallpaper'
+    > &
+      Schema.Attribute.Private;
+    Name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    Type: Schema.Attribute.Enumeration<['Mobile', 'Desktop']>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1250,10 +1307,12 @@ declare module '@strapi/strapi' {
       'api::comic-page.comic-page': ApiComicPageComicPage;
       'api::comic.comic': ApiComicComic;
       'api::genre.genre': ApiGenreGenre;
+      'api::god-art.god-art': ApiGodArtGodArt;
       'api::home-page.home-page': ApiHomePageHomePage;
       'api::medium.medium': ApiMediumMedium;
       'api::poem.poem': ApiPoemPoem;
       'api::story.story': ApiStoryStory;
+      'api::wallpaper.wallpaper': ApiWallpaperWallpaper;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
